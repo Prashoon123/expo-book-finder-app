@@ -29,6 +29,7 @@
     },
     "web": {
       "favicon": "./assets/icon.png"
-    }
+    },
+    "githubUrl": "https://github.com/Prashoon123/expo-book-finder-app"
   }
 }
