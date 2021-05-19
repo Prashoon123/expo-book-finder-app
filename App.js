@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   Platform,
   StyleSheet,
@@ -14,7 +14,7 @@ import { MaterialIcons } from "@expo/vector-icons";
 import Book from "./components/Book";
 import axios from "axios";
 import { CircleFade } from "react-native-animated-spinkit";
-import { API_KEY } from "./keys"
+import { API_KEY } from "./keys";
 
 export default function App() {
   const [input, setInput] = useState("");
@@ -57,7 +57,7 @@ export default function App() {
         </Text>
       </View>
 
-      <View style={{ height: 12 }} />
+      <View style={{ height: 14 }} />
 
       <View style={styles.inputContainer}>
         <View style={styles.inputView}>
@@ -73,6 +73,8 @@ export default function App() {
         </View>
         <Button title="Search" onPress={handleSearch} />
       </View>
+
+      <View style={{ height: 40 }} />
 
       <View style={styles.result}>
         <ScrollView
@@ -99,7 +101,7 @@ export default function App() {
               description={book.volumeInfo.subtitle}
               cover={book?.volumeInfo?.imageLinks?.thumbnail}
               buyLink={book.saleInfo.buyLink}
-              rating={Math.floor(book.volumeInfo.averageRating)}
+              rating={book.volumeInfo.averageRating}
             />
           ))}
         </ScrollView>
@@ -125,7 +127,7 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     flex: 0.2,
-    marginTop: 2
+    marginTop: 2,
   },
   inputView: {
     display: "flex",

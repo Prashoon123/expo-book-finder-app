@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { StyleSheet, View, Image } from "react-native";
 import { Text, Button } from "react-native-elements";
 import * as Linking from "expo-linking";
+import { Rating } from "react-native-elements";
 
 const Book = ({
   bookName,
@@ -21,6 +22,7 @@ const Book = ({
   };
 
   return (
+    <>
     <View style={styles.container}>
       <View style={styles.bookNameContainer}>
         <Text h3 style={styles.bookTitle}>
@@ -80,12 +82,12 @@ const Book = ({
             <View />
           ) : (
             <View style={{ flexDirection: "row" }}>
-              {Array(rating)
-                .fill()
-                .map((_) => (
-                  // eslint-disable-next-line
-                  <Text>⭐</Text>
-                ))}
+              <Rating
+                readonly
+                startingValue={rating}
+                tintColor="#302b63"
+                type="custom"
+              />
             </View>
           )}
 
@@ -101,6 +103,7 @@ const Book = ({
         </View>
       </View>
     </View>
+    </>
   );
 };
 
